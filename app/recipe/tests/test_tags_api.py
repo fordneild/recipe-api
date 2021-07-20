@@ -25,7 +25,7 @@ class PublicTagsApiTests(TestCase):
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
 
 class PrivateTagsApiTest(TestCase):
-    """Test the uathorized user tags API"""
+    """Test the unathorized user tags API"""
 
     def setUp(self) -> None:
         self.user = get_user_model().objects.create_user(
@@ -63,7 +63,7 @@ class PrivateTagsApiTest(TestCase):
 
     def test_create_tag_successful(self):
         """Test creating a new tag"""
-        payload = {'name':'testtag'}
+        payload = {'name': 'testtag'}
         self.client.post(TAGS_URL, payload)
 
         exists = Tag.objects.filter(
